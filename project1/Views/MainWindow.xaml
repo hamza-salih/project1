@@ -11,12 +11,11 @@
             <RowDefinition Height="37*"/>
             <RowDefinition Height="180*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="187*"/>
-            <ColumnDefinition Width="613*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="BtnAjouter" Content="Ajouter" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="132" Click="BtnAjouter_Click" Margin="31,63,0,0" Grid.Row="1"/>
-        <DataGrid ItemsSource="{Binding EtdList}" x:Name="GridGestionEtudiant" Grid.Column="1" Grid.Row="1"/>
+
+        <Button Content="Gestion utilisateur" HorizontalAlignment="Left" Margin="56,0,0,0" VerticalAlignment="Center" Height="40" Width="97" Click="BtnGestionEtd"/>
+        <Button Content="Absence" HorizontalAlignment="Left" Margin="172,0,0,0" VerticalAlignment="Center" Height="40" Width="97" Click="BtnAbsence_Click"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="693,0,0,0" VerticalAlignment="Center" Height="40" Width="97"/>
+        <Grid x:Name="UserGrid" Grid.Row="1" Background="#FFFFD0D0"/>
 
     </Grid>
 </Window>

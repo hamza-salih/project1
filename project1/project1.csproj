@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="P:\Etude\.NET\project1\project1\Business\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="P:\Etude\.NET\project1\project1\Business\.editorconfig" />
+  </ItemGroup>
+
 </Project>

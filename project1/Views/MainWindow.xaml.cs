@@ -21,9 +21,10 @@ namespace project1
     {
         public MainWindow()
         {
-            Business.MainWindowBusiness mainWindowBusiness = new Business.MainWindowBusiness();
             InitializeComponent();
-            this.DataContext = mainWindowBusiness;  
+            //Business.MainWindowBusiness mainWindowBusiness = new Business.MainWindowBusiness();
+            //Business.UcEtudiantBusiness ucEtudiantBusiness = new Business.UcEtudiantBusiness();
+            //this.DataContext = ucEtudiantBusiness;
         }
 
         private void BtnAjouter_Click(object sender, RoutedEventArgs e)
@@ -38,6 +39,28 @@ namespace project1
             //etudiant.CNE = "343432";
             //list.Add(etudiant);
             //GridGestionEtudiant.ItemsSource = list;
+
+        }
+
+        private void BtnGestionEtd(object sender, RoutedEventArgs e)
+        {
+            Views.ViewUserControle.UserControl1 gestion_user = new();
+            Business.UcEtudiantBusiness ucEtudiantBusiness = new();
+            gestion_user.DataContext = ucEtudiantBusiness;
+            UserGrid.Children.Clear();
+            UserGrid.Children.Add(gestion_user);
+
+        }
+
+        private void BtnAbsence_Click(object sender, RoutedEventArgs e)
+        {
+            Views.ViewUserControle.UcAbsence gestion_absence = new Views.ViewUserControle.UcAbsence();
+            Business.UcAbsenceBusiness ucAbsenceBusiness = new Business.UcAbsenceBusiness();
+            gestion_absence.DataContext = ucAbsenceBusiness;
+
+            UserGrid.Children.Clear();
+            UserGrid.Children.Add(gestion_absence);
+            
 
         }
     }

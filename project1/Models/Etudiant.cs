@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace project1_Home_.Models
 {
+    /// <summary>
+    /// Class Etudiant
+    /// </summary>
     public class Etudiant
     {
         #region Propriété
@@ -40,4 +43,21 @@ namespace project1_Home_.Models
 
 
     }
-}
+
+
+    /// <summary>
+    /// Class absence
+    /// </summary>
+    public class Absence
+    {
+        public int id_Absence { get; set; }
+        public Absence()
+        {
+
+        }
+        public Absence(int id)
+        {
+            this.id_Absence = id;
+        }
+    }
+    }
