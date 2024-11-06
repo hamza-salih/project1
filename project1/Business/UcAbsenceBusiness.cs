@@ -17,7 +17,8 @@ namespace project1.Business
             for (int i = 0; i < 10; i++) {
                 ListAbsence = new List<Absence>();
                 Absence absence = new Absence();
-                absence.id_Absence = i;
+                absence.id_Absence = 1;
+                absence.name = "Hamza";
                 ListAbsence.Add(absence);
             }
         }

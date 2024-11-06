@@ -42,9 +42,10 @@ namespace project1
 
         }
 
+        Views.ViewUserControle.UserControl1 gestion_user;
         private void BtnGestionEtd(object sender, RoutedEventArgs e)
         {
-            Views.ViewUserControle.UserControl1 gestion_user = new();
+            gestion_user = new();
             Business.UcEtudiantBusiness ucEtudiantBusiness = new();
             gestion_user.DataContext = ucEtudiantBusiness;
             UserGrid.Children.Clear();
@@ -54,13 +55,13 @@ namespace project1
 
         private void BtnAbsence_Click(object sender, RoutedEventArgs e)
         {
-            Views.ViewUserControle.UcAbsence gestion_absence = new Views.ViewUserControle.UcAbsence();
-            Business.UcAbsenceBusiness ucAbsenceBusiness = new Business.UcAbsenceBusiness();
-            gestion_absence.DataContext = ucAbsenceBusiness;
+            gestion_user.DataContext = new UcAbsenceBusiness();
+            //Views.ViewUserControle.UcAbsence gestion_absence = new Views.ViewUserControle.UcAbsence();
+            //Business.UcAbsenceBusiness ucAbsenceBusiness = new Business.UcAbsenceBusiness();
+            //gestion_absence.DataContext = ucAbsenceBusiness;
+            //UserGrid.Children.Clear();
+            //UserGrid.Children.Add(gestion_absence);
 
-            UserGrid.Children.Clear();
-            UserGrid.Children.Add(gestion_absence);
-            
 
         }
     }

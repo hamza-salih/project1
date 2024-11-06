@@ -50,14 +50,19 @@ namespace project1_Home_.Models
     /// </summary>
     public class Absence
     {
+
         public int id_Absence { get; set; }
+        public string name{ get; set; }
+
         public Absence()
         {
 
         }
-        public Absence(int id)
+        public Absence(int id, string name)
         {
             this.id_Absence = id;
+            this.name= name;
+
         }
     }
     }

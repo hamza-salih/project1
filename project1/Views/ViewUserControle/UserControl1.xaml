@@ -16,12 +16,12 @@
             <ColumnDefinition Width="691*"/>
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Top" Margin="0,48,0,0" Width="74" Grid.Row="1">
-            <Button Content="Ajouter" Height="33" Width="63" Margin="0,20,0,10" Click="BtnAjouter"/>
-            <Button Content="Editer" Height="33" Width="63" Margin="0,20,0,10" Click="BtnEditer"/>
+            <Button x:Name="BtnAjouterEtd" Content="Ajouter" Height="33" Width="63" Margin="0,20,0,10" Click="BtnAjouter"/>
+            <Button Content="Editer" Height="33" Width="63" Margin="0,20,0,10" Click="BtnEditerStudent"/>
             <Button Content="Suprimer" Height="33" Width="63" Margin="0,20,0,10" Click="BtnSuprimer"/>
 
         </StackPanel>
-        <DataGrid ItemsSource="{Binding StudentList}" Grid.Column="1" Grid.Row="1" Background="White"/>
+        <DataGrid ItemsSource="{Binding StudentList}" SelectedItem="{Binding SelectedStudent}" Grid.Column="1" Grid.Row="1" Background="White" SelectionChanged="DataGrid_SelectionChanged"/>
         <Label Grid.Column="1" Content="Section : Gestion Etudiant" HorizontalAlignment="Left" Height="36" Margin="13,16,0,0" VerticalAlignment="Top" Width="449"/>
 
     </Grid>

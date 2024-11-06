@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,12 @@ namespace project1.Business
 {
     internal class UcEtudiantBusiness
     {
-        public List<Etudiant> StudentList { get; set; }
+        public ObservableCollection<Etudiant> StudentList { get; set; }
+
+        public Etudiant SelectedStudent{ get; set; }
         public UcEtudiantBusiness()
         {
-            StudentList = new List<Etudiant>();
+            StudentList = new ObservableCollection<Etudiant>();
 
             for (int i = 0; i < 4; i++)
             {
