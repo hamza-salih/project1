@@ -28,31 +28,61 @@ namespace project1.Views.ViewUserControle
         private void BtnAjouter(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            if (btn != null && btn.Content != null && btn.Content.Equals("Ajouter Etudiant"))
+            if (btn != null && btn.Content != null)
             {
-                Etudiant etudiant = new Etudiant();
-                var dataEntry = new Views.DataEntry.StudentDataEntry();
-                dataEntry.DataContext = etudiant;
-
-                if (dataEntry.ShowDialog() == true)
+                if (btn.Content.Equals("Ajouter Etudiant"))
                 {
-                    Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
-                    if (bs != null)
+                    Etudiant etudiant = new Etudiant();
+                    var dataEntry = new Views.DataEntry.StudentDataEntry();
+                    dataEntry.DataContext = etudiant;
+
+                    if (dataEntry.ShowDialog() == true)
                     {
-                        bs.ListOfObject.Add(etudiant);
+                        AddObjectToBusinessContext(etudiant);
                     }
-                    else
+                }
+                else if (btn.Content.Equals("Ajouter Absence"))
+                {
+                    Absence absence = new Absence();
+                    var absenceEntry = new Views.DataEntry.AbsenceDataEntry();
+                    absenceEntry.DataContext = absence;
+
+                    if (absenceEntry.ShowDialog() == true)
                     {
-                        MessageBox.Show("Error: Business context is not set.");
+                        AddObjectToBusinessContext(absence);
                     }
                 }
             }
-            else
+        }
+
+        private void AddObjectToBusinessContext(object newObject)
+        {
+            if (newObject is Etudiant)
             {
-                var absenceEntry = new Views.DataEntry.AbsenceDataEntry();
-                absenceEntry.ShowDialog();
+                Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
+                if (bs != null)
+                {
+                    bs.ListOfObject.Add(newObject as Etudiant);
+                }
+                else
+                {
+                    MessageBox.Show("Error: Business context for Etudiant is not set.");
+                }
+            }
+            else if (newObject is Absence)
+            {
+                Business.UcAbsenceBusiness bs = this.DataContext as Business.UcAbsenceBusiness;
+                if (bs != null)
+                {
+                    bs.ListOfObject.Add(newObject as Absence);
+                }
+                else
+                {
+                    MessageBox.Show("Error: Business context for Absence is not set.");
+                }
             }
         }
+
 
 
         private void BtnEditerStudent(object sender, RoutedEventArgs e)
@@ -104,43 +134,15 @@ namespace project1.Views.ViewUserControle
 
         private void BtnSuprimer(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
             Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
-
-            if (bs == null)
+            if (bs.SelectedStudent != null)
             {
-                MessageBox.Show("Error: Business context is not set.");
-                return;
-            }
-
-            if (btn != null && btn.Content != null && btn.Content.Equals("Supprimer Etudiant"))
-            {
-                if (bs.SelectedStudent == null)
-                {
-                    MessageBox.Show("Error: Please select a student.");
-                    return;
-                }
-
                 bs.ListOfObject.Remove(bs.SelectedStudent);
-                MessageBox.Show("Student has been deleted.");
             }
-            else if (btn != null && btn.Content != null && btn.Content.Equals("Supprimer Absence"))
-            {
-                if (bs.SelectedAbsence == null)
-                {
-                    MessageBox.Show("Error: Please select an absence.");
-                    return;
-                }
-
-                bs.ListOfObject.Remove((Etudiant)bs.SelectedAbsence);
-                MessageBox.Show("Absence has been deleted.");
-            }
-            else
-            {
-                MessageBox.Show("Error: Invalid action.");
+            else {
+                MessageBox.Show("Error: Please select a student.");
             }
         }
-
     }
 }
 

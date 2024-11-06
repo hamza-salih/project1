@@ -1,4 +1,5 @@
-﻿using System;
+﻿using project1_Home_.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,26 @@ namespace project1.Views.ViewUserControle
 
         private void BtnAjouter_Click(object sender, RoutedEventArgs e)
         {
+            Button btn = sender as Button;
+            if (btn != null && btn.Content != null && btn.Content.Equals("Ajouter Absence"))
+            {
+                Absence absence = new Absence();
+                var dataEntry = new Views.DataEntry.AbsenceDataEntry();
+                dataEntry.DataContext = absence;
 
+                if (dataEntry.ShowDialog() == true)
+                {
+                    Business.UcAbsenceBusiness bs = this.DataContext as Business.UcAbsenceBusiness;
+                    if (bs != null)
+                    {
+                        bs.ListOfObject.Add(absence);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Business context is not set.");
+                    }
+                }
+            }
         }
 
         private void BtnEditer_Click(object sender, RoutedEventArgs e)
