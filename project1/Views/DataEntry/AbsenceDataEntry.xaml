@@ -7,17 +7,11 @@
         mc:Ignorable="d"
         Title="AbsenceDataEntry" Height="450" Width="800">
     <Grid>
-        <Label Content="Nom" HorizontalAlignment="Left" Height="42" Margin="25,66,0,0" VerticalAlignment="Top" Width="171"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,66,0,0" TextWrapping="Wrap" Text="{Binding Nom}" VerticalAlignment="Top" Width="350"/>
+        <Label Content="ID" HorizontalAlignment="Left" Height="42" Margin="25,66,0,0" VerticalAlignment="Top" Width="171"/>
+        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,66,0,0" TextWrapping="Wrap" Text="{Binding id_Absence}" VerticalAlignment="Top" Width="350"/>
 
-        <Label Content="Prenom" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="171" Margin="25,137,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,137,0,0" TextWrapping="Wrap" Text="{Binding Prenom}" VerticalAlignment="Top" Width="350"/>
-
-        <Label Content="CIN" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="171" Margin="25,217,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,217,0,0" TextWrapping="Wrap" Text="{Binding CIN}" VerticalAlignment="Top" Width="350"/>
-
-        <Label Content="CNE" HorizontalAlignment="Left" Height="42" Margin="25,298,0,0" VerticalAlignment="Top" Width="171"/>
-        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,298,0,0" TextWrapping="Wrap" Text="{Binding CNE}" VerticalAlignment="Top" Width="350"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="171" Margin="25,137,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="42" Margin="251,137,0,0" TextWrapping="Wrap" Text="{Binding Nom}" VerticalAlignment="Top" Width="350"/>
 
         <Button Content="Enregister" HorizontalAlignment="Left" Height="35" Margin="300,389,0,0" VerticalAlignment="Top" Width="168" Click="BtnEnregistrer"/>
         <Button Content="Annuler" HorizontalAlignment="Left" Height="35" Margin="547,389,0,0" VerticalAlignment="Top" Width="168" Click="BtnAnnuler"/>

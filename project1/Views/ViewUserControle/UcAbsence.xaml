@@ -12,17 +12,17 @@
             <RowDefinition Height="77*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="111*"/>
-            <ColumnDefinition Width="689*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="123*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center" Margin="0,76,0,0" Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top">
-            <Button Content="Ajouter" Height="33" Width="82" Margin="0,20,0,0" FontSize="14" Click="BtnAjouter_Click"/>
-            <Button Content="Editer" Height="33" Width="82" Margin="0,20,0,0" FontSize="14" Click="BtnEditer_Click"/>
-            <Button Content="Suprimer" Height="33" Width="82" Margin="0,20,0,0" FontSize="14" Click="BtnSuprimer_Click"/>
+        <StackPanel HorizontalAlignment="Center" Margin="0,76,0,0" Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" Height="159" Width="164">
+            <Button Content="{Binding AddButton}" Height="33" Width="139" Margin="0,20,0,0" FontSize="14" Click="BtnAjouter_Click"/>
+            <Button Content="{Binding EditButton}" Height="33" Width="139" Margin="0,20,0,0" FontSize="14" Click="BtnEditer_Click"/>
+            <Button Content="{Binding DeleteButton}" Height="33" Width="139" Margin="0,20,0,0" FontSize="14" Click="BtnSuprimer_Click"/>
 
         </StackPanel>
-        <DataGrid x:Name="AbsenceGrid" ItemsSource="{Binding ListAbsence}" Grid.Column="1" Grid.Row="1" Background="White" SelectionChanged="AbsenceGrid_SelectionChanged"/>
-        <Label Grid.Column="1" Content="Section : Gestion Absence" HorizontalAlignment="Left" Height="27" Margin="26,0,0,0" VerticalAlignment="Center" Width="348"/>
+        <DataGrid x:Name="AbsenceGrid" ItemsSource="{Binding ListOfObject}" SelectedItem="{Binding SelectedAbsence}" Grid.Column="1" Grid.Row="1" Background="White" SelectionChanged="AbsenceGrid_SelectionChanged"/>
+        <Label Grid.Column="1" Content="{Binding BusinessLabel}" HorizontalAlignment="Left" Height="27" Margin="26,0,0,0" VerticalAlignment="Center" Width="348"/>
 
     </Grid>
 </UserControl>

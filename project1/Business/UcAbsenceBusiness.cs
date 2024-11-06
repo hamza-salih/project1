@@ -9,17 +9,28 @@ namespace project1.Business
 {
     internal class UcAbsenceBusiness
     {
-        public List<Absence> ListAbsence { get; set; }
+        public List<Absence> ListOfObject { get; set; }
+        public Etudiant SelectedAbsence { get; set; }
+
+        public string BusinessLabel { get; set; }
+        public string AddButton { get; set; }
+        public string EditButton { get; set; }
+        public string DeleteButton { get; set; }
+
         public UcAbsenceBusiness() 
         {
-           ListAbsence = new List<Absence>();
+            BusinessLabel = "Gestion Absence";
+            AddButton = "Ajouter Absence";
+            EditButton = "Editer Absence";
+            DeleteButton = "Suprimer Absence";
+            ListOfObject = new List<Absence>();
 
             for (int i = 0; i < 10; i++) {
-                ListAbsence = new List<Absence>();
+                ListOfObject = new List<Absence>();
                 Absence absence = new Absence();
                 absence.id_Absence = 1;
-                absence.name = "Hamza";
-                ListAbsence.Add(absence);
+                absence.Name = "Hamza";
+                ListOfObject.Add(absence);
             }
         }
     }

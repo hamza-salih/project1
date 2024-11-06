@@ -27,56 +27,120 @@ namespace project1.Views.ViewUserControle
         }
         private void BtnAjouter(object sender, RoutedEventArgs e)
         {
-            Etudiant etudiant = new Etudiant();
-            Views.DataEntry.StudentDataEntry DataEntry = new DataEntry.StudentDataEntry();
-            DataEntry.DataContext = etudiant;
-
-            if (DataEntry.ShowDialog() == true)
+            Button btn = sender as Button;
+            if (btn != null && btn.Content != null && btn.Content.Equals("Ajouter Etudiant"))
             {
-                Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
-                if (bs != null)
-                {
-                    bs.StudentList.Add(etudiant);
-                }
-                else
-                {
-                    MessageBox.Show("Error: Business context is not set.");
-                }
-            }
-        }
+                Etudiant etudiant = new Etudiant();
+                var dataEntry = new Views.DataEntry.StudentDataEntry();
+                dataEntry.DataContext = etudiant;
 
-        private void BtnEditerStudent(object sender, RoutedEventArgs e)
-        {
-            Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
-            if (bs != null && bs.SelectedStudent != null)
-            {
-                Views.DataEntry.StudentDataEntry dataEntry = new Views.DataEntry.StudentDataEntry();
-                dataEntry.DataContext = bs.SelectedStudent;
-                dataEntry.ShowDialog();
+                if (dataEntry.ShowDialog() == true)
+                {
+                    Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
+                    if (bs != null)
+                    {
+                        bs.ListOfObject.Add(etudiant);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Business context is not set.");
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Error: Please select a student.");
+                var absenceEntry = new Views.DataEntry.AbsenceDataEntry();
+                absenceEntry.ShowDialog();
             }
         }
+
+
+        private void BtnEditerStudent(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
+
+            if (bs == null)
+            {
+                MessageBox.Show("Error: Business context is not set.");
+                return;
+            }
+
+            if (btn != null && btn.Content != null && btn.Content.Equals("Editer Etudiant"))
+            {
+                if (bs.SelectedStudent == null)
+                {
+                    MessageBox.Show("Error: Please select a student.");
+                    return;
+                }
+
+                var dataEntry = new Views.DataEntry.StudentDataEntry();
+                dataEntry.DataContext = bs.SelectedStudent;
+                dataEntry.ShowDialog();
+            }
+            else if (btn != null && btn.Content != null && btn.Content.Equals("Editer Absence"))
+            {
+                if (bs.SelectedAbsence == null)
+                {
+                    MessageBox.Show("Error: Please select an absence.");
+                    return;
+                }
+
+                var absenceEntry = new Views.DataEntry.AbsenceDataEntry();
+                absenceEntry.DataContext = bs.SelectedAbsence;
+                absenceEntry.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Error: Invalid action.");
+            }
+        }
+
 
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Handle the selection change logic here
         }
 
         private void BtnSuprimer(object sender, RoutedEventArgs e)
         {
+            Button btn = sender as Button;
             Business.UcEtudiantBusiness bs = this.DataContext as Business.UcEtudiantBusiness;
-            if (bs.SelectedStudent != null)
+
+            if (bs == null)
             {
-                bs.StudentList.Remove(bs.SelectedStudent);
+                MessageBox.Show("Error: Business context is not set.");
+                return;
             }
-            else {
-                MessageBox.Show("Error: Please select a student.");
+
+            if (btn != null && btn.Content != null && btn.Content.Equals("Supprimer Etudiant"))
+            {
+                if (bs.SelectedStudent == null)
+                {
+                    MessageBox.Show("Error: Please select a student.");
+                    return;
+                }
+
+                bs.ListOfObject.Remove(bs.SelectedStudent);
+                MessageBox.Show("Student has been deleted.");
+            }
+            else if (btn != null && btn.Content != null && btn.Content.Equals("Supprimer Absence"))
+            {
+                if (bs.SelectedAbsence == null)
+                {
+                    MessageBox.Show("Error: Please select an absence.");
+                    return;
+                }
+
+                bs.ListOfObject.Remove((Etudiant)bs.SelectedAbsence);
+                MessageBox.Show("Absence has been deleted.");
+            }
+            else
+            {
+                MessageBox.Show("Error: Invalid action.");
             }
         }
+
     }
 }
 

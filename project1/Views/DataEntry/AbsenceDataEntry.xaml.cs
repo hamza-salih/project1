@@ -26,12 +26,13 @@ namespace project1.Views.DataEntry
 
         private void BtnEnregistrer(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = true;
 
         }
 
         private void BtnAnnuler(object sender, RoutedEventArgs e)
         {
-
+            this.DialogResult = true;
         }
     }
 }

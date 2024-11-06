@@ -52,7 +52,7 @@ namespace project1_Home_.Models
     {
 
         public int id_Absence { get; set; }
-        public string name{ get; set; }
+        public string Name{ get; set; }
 
         public Absence()
         {
@@ -61,7 +61,7 @@ namespace project1_Home_.Models
         public Absence(int id, string name)
         {
             this.id_Absence = id;
-            this.name= name;
+            this.Name= name;
 
         }
     }

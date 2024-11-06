@@ -10,12 +10,23 @@ namespace project1.Business
 {
     internal class UcEtudiantBusiness
     {
-        public ObservableCollection<Etudiant> StudentList { get; set; }
+        public ObservableCollection<Etudiant> ListOfObject { get; set; }
 
         public Etudiant SelectedStudent{ get; set; }
+        public string BusinessLabel { get; set; }
+
+        public string AddButton { get; set; }
+        public string EditButton { get; set; }
+        public string DeleteButton { get; set; }
+        public object SelectedAbsence { get; internal set; }
+
         public UcEtudiantBusiness()
         {
-            StudentList = new ObservableCollection<Etudiant>();
+            BusinessLabel = "Gestion Etudiant";
+            AddButton = "Ajouter Etudiant";
+            EditButton = "Editer Etudiant";
+            DeleteButton = "Suprimer Etudiant";
+            ListOfObject = new ObservableCollection<Etudiant>();
 
             for (int i = 0; i < 4; i++)
             {
@@ -24,7 +35,7 @@ namespace project1.Business
                 etudiant.Prenom = "Hamza" + i.ToString();
                 etudiant.CIN = "444444" + i.ToString();
                 etudiant.CNE = "343432" + i.ToString();
-                StudentList.Add(etudiant);
+                ListOfObject.Add(etudiant);
 
             }
 
